@@ -14,6 +14,7 @@ import {
 } from "firebase/firestore";
 import { db } from "../../services/firebaseConnection";
 import { format } from 'date-fns'
+import Modal from '../../components/Modal'
 
 import "./dashboard.css";
 
@@ -162,12 +163,9 @@ export default function Dashboard() {
                             <FiSearch color="#FFF" size={17} />
                           </button>
 
-                          <button
-                            className="action"
-                            style={{ backgroundColor: "#f6a935" }}
-                          >
+                          <Link to={`/new/${item.id}`} className="action" style={{ backgroundColor: "#f6a935" }}>
                             <FiEdit2 color="#FFF" size={17} />
-                          </button>
+                          </Link>
                         </td>
                       </tr>
                     );
@@ -181,6 +179,9 @@ export default function Dashboard() {
           )}
         </>
       </div>
+      
+      <Modal/>
+
     </div>
   );
 }
