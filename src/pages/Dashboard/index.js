@@ -21,13 +21,15 @@ import "./dashboard.css";
 const listRef = collection(db, "chamados");
 
 export default function Dashboard() {
-  const { logout } = useContext(AuthContext);
+  // const { logout } = useContext(AuthContext);
 
   const [chamados, setChamados] = useState([]);
   const [loading, setLoading] = useState(true);
   const [isEmpty, setIsEmpty] = useState(false);
   const [lastDocs, setLastDocs] = useState();
   const [loadingMore, setLoadingMore] = useState(true);
+  const [showPostModal, setShowPostModal] = useState(false);
+  const [detail, setDetail] = useState();
 
   useEffect(() => {
     async function loadChamados() {
@@ -58,7 +60,7 @@ export default function Dashboard() {
           cliente: doc.data().cliente,
           clienteId: doc.data().clienteId,
           created: doc.data().created,
-          createdFormat: format(doc.data().created.toDate(), 'HH:mm:ss dd/LL/yyyy'),
+          createdFormat: format(doc.data().created.toDate(), 'dd/LL/yyyy HH:mm:ss'),
           status: doc.data().status,
           complemento: doc.data().complemento,
           setor: doc.data().setor,
@@ -102,6 +104,11 @@ export default function Dashboard() {
     const querySnapshot = await getDocs(q);
     await updateState(querySnapshot)
 
+  }
+
+  function toggleModal(item){
+    setShowPostModal(!showPostModal)
+    setDetail(item)
   }
 
   return (
@@ -154,12 +161,11 @@ export default function Dashboard() {
                             {item.status}
                           </span>
                         </td>
-                        <td data-label="Cadastrado">16/12/2023</td>
+                        <td data-label="Cadastrado">{item.createdFormat}</td>
                         <td data-label="#">
                           <button
                             className="action"
-                            style={{ backgroundColor: "#3583f6" }}
-                          >
+                            style={{ backgroundColor: "#3583f6" }} onClick={ () => toggleModal(item) }>
                             <FiSearch color="#FFF" size={17} />
                           </button>
 
@@ -174,13 +180,16 @@ export default function Dashboard() {
               </table>
                {loadingMore && <h3>Buscando mais chamados...</h3>} 
                {!loadingMore && !isEmpty && <button className="btn-more" onClick={handleMore}> Buscar mais</button>}  
-              
             </>
           )}
         </>
       </div>
       
-      <Modal/>
+        {showPostModal && (
+          <Modal 
+          conteudo={detail}
+          close={() => setShowPostModal(!showPostModal)} />
+        )}
 
     </div>
   );

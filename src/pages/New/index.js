@@ -181,14 +181,26 @@ export default function New() {
 
             <label>Setor</label>
             <select value={setor} onChange={handleChangeSetor}>
-              <option value="Nugeo">Nugeo</option>
-              <option value="Nugef">Nugef</option>
-              <option value="Financeiro">Financeiro</option>
-              <option value="Recursos Humanos">Recursos Humanos</option>
+              <option value="">Escolha o setor</option>
+              <option value="Arquivo">ARQUIVO</option>
+              <option value="Atendimento Nugef">ATENDIMENTO NUGEF</option>
+              <option value="Atendimento">ATENDIMENTO</option>
+              <option value="Campo">CAMPO</option>
+              <option value="Diteo">DITEO</option>
+              <option value="Diterd">DITERD</option>
+              <option value="Empresa">EMPRESA</option>
+              <option value="Nudef">NUDEF</option>
+              <option value="Nugef">NUGEF</option>
+              <option value="Nugeo">NUGEO</option>
+              <option value="Super">SUPER</option>
+              <option value="Titulacao">TITULAÇÃO</option>
+              <option value="Unigep">UNIGEP</option>
+              <option value="Uniti">UNITI</option>
             </select>
 
             <label>Assunto</label>
             <select value={assunto} onChange={handleChangeSelect}>
+            <option value="">Escolha o assunto</option>
               <option value="Suporte">Suporte</option>
               <option value="Desenvolvimento">Desenvolvimento</option>
               <option value="Outro">Outro</option>
@@ -231,7 +243,6 @@ export default function New() {
               value={complemento}
               onChange={(e) => setComplemento(e.target.value)}
             />
-
             <button type="submit">Registrar</button>
           </form>
         </div>

@@ -49,20 +49,23 @@ export default function Customers() {
         <div className="container">
           <form className="form-profile" onSubmit={handleRegister}>
           <label>Setor</label>
-            <select value={setor} onChange={handleChangeSetor}>
-              <option value="Nugeo">Nugeo</option>
-              <option value="Nugef">Nugef</option>
-              <option value="Financeiro">Financeiro</option>
-              <option value="Recursos Humanos">Recursos Humanos</option>
+          <select value={setor} onChange={handleChangeSetor}>
+              <option value="">Escolha o setor</option>
+              <option value="Arquivo">ARQUIVO</option>
+              <option value="Atendimento Nugef">ATENDIMENTO NUGEF</option>
+              <option value="Atendimento">ATENDIMENTO</option>
+              <option value="Campo">CAMPO</option>
+              <option value="Diteo">DITEO</option>
+              <option value="Diterd">DITERD</option>
+              <option value="Empresa">EMPRESA</option>
+              <option value="Nudef">NUDEF</option>
+              <option value="Nugef">NUGEF</option>
+              <option value="Nugeo">NUGEO</option>
+              <option value="Super">SUPER</option>
+              <option value="Titulacao">TITULAÇÃO</option>
+              <option value="Unigep">UNIGEP</option>
+              <option value="Uniti">UNITI</option>
             </select>
-            {/* <label>Setor</label>
-            <input
-              type="text"
-              placeholder="Nome do setor"
-              value={setor}
-              onChange={(e) => setSetor(e.target.value)}
-            /> */}
-
             <label>Cliente</label>
             <input
               type="text"

@@ -21,14 +21,19 @@ export default function SignIn() {
 
   return (
     <div className="container-center">
-      {/* <p style={{
-        color: "white", 
-        fontFamily: 'Courier New monospace',
-        fontSize: '70px'}}>SISTEMA DE CHAMADOS</p> */}
       <div className="login">
         <div className="login-area">
           <img src={logo} alt="Logo do Sistema de Chamados" />
         </div>
+        <p style={{
+            position: "relative",
+            paddingTop: '0.5em',
+            color: "green", 
+            fontFamily: 'Arial, sans-serif',
+            fontSize: '30px', 
+            fontWeight: 'bold'
+        }}>SISTEMA DE CHAMADOS</p>
+        
 
         <form onSubmit={handleSignIn}>
           <h1>Entrar</h1>
