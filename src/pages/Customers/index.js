@@ -1,5 +1,5 @@
 import { useState } from "react";
-import Header from "../../components/header";
+import Header from "../../components/Header";
 import Title from "../../components/Title";
 
 import { FiUser } from "react-icons/fi";
@@ -50,21 +50,24 @@ export default function Customers() {
           <form className="form-profile" onSubmit={handleRegister}>
           <label>Setor</label>
           <select value={setor} onChange={handleChangeSetor}>
-              <option value="">Escolha o setor</option>
-              <option value="Arquivo">ARQUIVO</option>
-              <option value="Atendimento Nugef">ATENDIMENTO NUGEF</option>
-              <option value="Atendimento">ATENDIMENTO</option>
-              <option value="Campo">CAMPO</option>
-              <option value="Diteo">DITEO</option>
-              <option value="Diterd">DITERD</option>
-              <option value="Empresa">EMPRESA</option>
-              <option value="Nudef">NUDEF</option>
-              <option value="Nugef">NUGEF</option>
-              <option value="Nugeo">NUGEO</option>
-              <option value="Super">SUPER</option>
-              <option value="Titulacao">TITULAÇÃO</option>
-              <option value="Unigep">UNIGEP</option>
-              <option value="Uniti">UNITI</option>
+          <option value="">Escolha o setor...</option>
+              <option value="Adins">Adins - Assesoria de Desenvolvimento Institucional</option>
+              <option value="Assejur">Assejur - Assessoria Jurídica</option>
+              <option value="Diaf">Diaf - Diretoria Administrativo-Financeira</option>
+              <option value="Diteo">Diteo - Diretoria Técnica e de Operações</option>
+              <option value="Gead">Gead - Gerência de Administração</option>
+              <option value="Gedef">Gedef - Gerência de Desenvolvimento Fundiário</option>
+              <option value="Gefic">Gefic - Gerência de Gestão Financeira e Contábil</option>
+              <option value="Gegef">Gegef - Gerência de Gestão Fundiária</option>
+              <option value="Gegeo">Gegeo - Gerência de Cartografia, Geoprocessamento e Diagnóstico Fundiário</option>
+              <option value="Necaf">Necaf - Núcleo Estudos, Cadastro e Levantamento Fundiário</option>
+              <option value="Nuart">Nuart - Núcleo de Apoio a Assentamentos, Reassentamentos Rurais e Acesso a Terra</option>
+              <option value="Nupaf">Nupaf - Núcleo de Titulação e Patrimônio Fundiário</option>
+              <option value="Nugep">Nugep - Núcleo de Gestão de Pessoas</option>
+              <option value="Ouvid">Ouvidoria</option>
+              <option value="Super">Super - Superintendência</option>
+              <option value="Supad">Supad - Superintendência Adjunta</option>
+              <option value="Uniti">Uniti - Unidade de Tecnologia da Informação</option>
             </select>
             <label>Cliente</label>
             <input

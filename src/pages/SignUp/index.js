@@ -49,7 +49,7 @@ export default function SignUp() {
           />
 
           <button type="submit">
-            {loadingAuth ? 'Caregando...' : 'Cadastrar'}
+            {loadingAuth ? 'Carregando...' : 'Cadastrar'}
           </button>
         </form>
 
