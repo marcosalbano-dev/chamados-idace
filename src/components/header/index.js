@@ -1,5 +1,5 @@
 import { useContext } from "react";
-import avatarImg from "../../assets/avatar.png";
+import avatarImg from "../../assets/icone.png";
 import { Link } from "react-router-dom";
 import { AuthContext } from "../../contexts/auth";
 import { FiHome, FiUser, FiSettings } from 'react-icons/fi';
@@ -12,7 +12,7 @@ export default function Header() {
     <div className="sidebar">
       <div>
         <img
-          src={user.avatarUrl === null ? avatarImg : user.avatarUrl}
+          src={user.avatarUrl === null ? avatarImg : avatarImg}
           alt="Foto do usuário"
         />
       </div>

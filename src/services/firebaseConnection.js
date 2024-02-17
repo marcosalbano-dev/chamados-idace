@@ -13,6 +13,16 @@ const firebaseConfig = {
     measurementId: "G-Z05PZJZFKK"
   };
 
+// const firebaseConfig = {
+//   apiKey: "AIzaSyCFXWDRXZzpNm1gg-X0qEYHnTxLu-7z81M",
+//   authDomain: "idace-chamados.firebaseapp.com",
+//   projectId: "idace-chamados",
+//   storageBucket: "idace-chamados.appspot.com",
+//   messagingSenderId: "776208892941",
+//   appId: "1:776208892941:web:694eb3adb0fa2104658144",
+//   measurementId: "G-FL96XLCCLP"
+// };
+
   const firebaseApp = initializeApp(firebaseConfig)
   const auth = getAuth(firebaseApp)
   const db = getFirestore(firebaseApp)

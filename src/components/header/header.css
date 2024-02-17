@@ -23,11 +23,11 @@
 
 .sidebar div img {
     width: 90px;
-    height: 90px;
+    height: 100px;
     display: block;
     margin: auto;
-    border-radius: 50%;
-    object-fit: cover;
+    /* border-radius: 50%; */
+    object-fit: fill;
     filter: drop-shadow(2px 9px 6px #121212);
     -webkit-filter: drop-shadow(2px 9px 6px #121212);
 }

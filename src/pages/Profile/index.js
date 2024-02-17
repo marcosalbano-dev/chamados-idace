@@ -1,5 +1,5 @@
 import { useContext, useState } from "react";
-import Header from "../../components/header";
+import Header from "../../components/Header";
 import Title from "../../components/Title";
 
 import { FiSettings, FiUpload } from "react-icons/fi";
@@ -98,7 +98,7 @@ export default function Profile() {
         </Title>
         <div className="container">
           <form className="form-profile" onSubmit={handleSubmit}>
-            <label className="label-avatar">
+            {/* <label className="label-avatar">
               <span>
                 <FiUpload color="#FFF" size={25} />
               </span>
@@ -119,7 +119,7 @@ export default function Profile() {
                   height={250}
                 />
               )}
-            </label>
+            </label> */}
 
             <label>Nome</label>
             <input

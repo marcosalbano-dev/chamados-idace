@@ -1,6 +1,6 @@
 import { useContext, useEffect, useState } from "react";
 import { AuthContext } from "../../contexts/auth";
-import Header from "../../components/header";
+import Header from "../../components/Header";
 import Title from "../../components/Title";
 import { FiPlus, FiMessageSquare, FiSearch, FiEdit2 } from "react-icons/fi";
 import { Link } from "react-router-dom";
@@ -11,10 +11,13 @@ import {
   limit,
   startAfter,
   query,
+  where,
+  or,
 } from "firebase/firestore";
 import { db } from "../../services/firebaseConnection";
 import { format } from 'date-fns'
 import Modal from '../../components/Modal'
+import { doc, updateDoc } from "firebase/firestore";
 
 import "./dashboard.css";
 
@@ -30,11 +33,13 @@ export default function Dashboard() {
   const [loadingMore, setLoadingMore] = useState(true);
   const [showPostModal, setShowPostModal] = useState(false);
   const [detail, setDetail] = useState();
+  const { user } = useContext(AuthContext);
 
   useEffect(() => {
     async function loadChamados() {
-      const q = query(listRef, orderBy("created", "desc"), limit(5));
-      const querySnapshot = await getDocs(q);
+      const queryAbertos = query(listRef,  where("status", "in", ["Aberto", "Progresso"]), limit(20))
+      // const q = query(listRef, orderBy("created", "desc"), limit(10));
+      const querySnapshot = await getDocs(queryAbertos);
       setChamados([]);
 
       await updateState(querySnapshot);
@@ -64,10 +69,10 @@ export default function Dashboard() {
           status: doc.data().status,
           complemento: doc.data().complemento,
           setor: doc.data().setor,
+          usuario: doc.data().userId
         });
       });
       const lastDoc = querySnapshot.docs[querySnapshot.docs.length - 1]
-
 
       setChamados((chamados) => [...chamados, ...lista]);
       setLastDocs(lastDoc)
@@ -138,31 +143,53 @@ export default function Dashboard() {
               <table>
                 <thead>
                   <tr>
-                    <th scope="col">Cliente</th>
+                    {/* <th scope="col">Técnico</th> */}
+                    <th scope="col">Usuário</th>
                     <th scope="col">Setor</th>
                     <th scope="col">Assunto</th>
                     <th scope="col">Status</th>
                     <th scope="col">Cadastrado em</th>
-                    <th scope="col">#</th>
+                    <th scope="col">Ações</th>
                   </tr>
                 </thead>
                 <tbody>
                   {chamados.map((item, index) => {
                     return (
                       <tr key={index}>
+                        {/* <td data-label="Usuario">{item.usuario.data}</td> */}
                         <td data-label="Cliente">{item.cliente}</td>
                         <td data-label="Setor">{item.setor}</td>
                         <td data-label="Assunto">{item.assunto}</td>
-                        <td data-label="Status">
+                        <td data-label='Status'>
+                          {item.status ===
+                            'Aberto' && (
+                             <span className='badge badge-green'>
+                              {item.status}
+                             </span>
+                          )}
+                          {item.status ===
+                            'Atendido' && (
+                            <span className='badge badge-red'>
+                             {item.status}
+                            </span>
+                          )}
+                          {item.status ===
+                            'Progresso' && (
+                            <span className='badge badge-blue'>
+                             {item.status}
+                            </span>
+                          )}
+                          </td>
+                        {/* <td data-label="Status">
                           <span
                             className="badge"
                             style={{ backgroundColor: item.status === 'Aberto' ? '#5cb85c' : '#999' }}
                           >
                             {item.status}
                           </span>
-                        </td>
+                        </td> */}
                         <td data-label="Cadastrado">{item.createdFormat}</td>
-                        <td data-label="#">
+                        <td data-label="Ações">
                           <button
                             className="action"
                             style={{ backgroundColor: "#3583f6" }} onClick={ () => toggleModal(item) }>
@@ -179,7 +206,7 @@ export default function Dashboard() {
                 </tbody>
               </table>
                {loadingMore && <h3>Buscando mais chamados...</h3>} 
-               {!loadingMore && !isEmpty && <button className="btn-more" onClick={handleMore}> Buscar mais</button>}  
+               {/* {!loadingMore && !isEmpty && <button className="btn-more" onClick={handleMore}> Buscar atendidos</button>}   */}
             </>
           )}
         </>

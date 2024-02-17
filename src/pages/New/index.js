@@ -1,4 +1,4 @@
-import { useState, useEffect, useContext } from "react";
+import { useState, useEffect, useContext, useRef } from "react";
 import Header from "../../components/Header";
 import Title from "../../components/Title";
 import { FiPlusCircle } from "react-icons/fi";
@@ -27,9 +27,6 @@ export default function New() {
   const [assunto, setAssunto] = useState("Suporte");
   const [status, setStatus] = useState("Aberto");
   const [idCustomer, setIdCustomer] = useState(false);
-
-
-
 
   useEffect(() => {
     async function loadCustomers() {
@@ -120,6 +117,7 @@ export default function New() {
         setor: setor,
       })
         .then(() => {
+          
           toast.info("Chamado atualizado com sucesso!")
           setCustomerSelected(0)
           setComplemento('')
@@ -128,8 +126,9 @@ export default function New() {
         .catch((error) => {
           toast.error("Ops, erro ao atualizar esse chamado!")
         })
-
+        
       return;
+      
     }
 
     //registrar um chamado
@@ -151,6 +150,7 @@ export default function New() {
       .catch((error) => {
         toast.error("Ops! Erro ao resistrar, tente mais tarde");
       });
+      // console.log(user.nome)
   }
 
   return (
@@ -172,7 +172,7 @@ export default function New() {
                 {customers.map((item, index) => {
                   return (
                     <option key={index} value={index}>
-                      {item.nomeCliente}
+                      {[item.nomeCliente, item.userNome]}
                     </option>
                   );
                 })}
@@ -204,14 +204,14 @@ export default function New() {
             <label>Serviço</label>
             <select value={assunto} onChange={handleChangeSelect}>
               <option value="">Escolha o serviço...</option>
-              <option value="Atualizar-SO">Atualizar Sistema Operacional</option>
-              <option value="Desenvolvimento">Desenvolvimento</option>
-              <option value="Destitular">Destitular</option>
-              <option value="Nobreak com problema">Nobreak com problema</option>
-              <option value="Sem Internet">Computador sem internet</option>
-              <option value="Sem Rede">Computador sem rede</option>
-              <option value="Suporte">Suporte</option>
-              <option value="Outro serviço">Outro serviço</option>
+              <option value="Serviço no SIGA">Serviço no SIGA</option>
+              <option value="Serviço no TITULA">Serviço no TITULA</option>
+              <option value="Serviço no BANCO DE DADOS">Serviço no BANCO DE DADOS</option>
+              <option value="Serviço no EMAIL">Serviço no EMAIL</option>
+              <option value="Serviço na REDE">Serviço na REDE</option>
+              <option value="Relatórios Gerenciais">Relatórios Gerenciais</option>
+              <option value="Manutenção e Suporte">Manutenção e Suporte</option>
+              <option value="Inserir dados da Empresa Topodatum">Inserir dados da Empresa Topodatum</option>
             </select>
 
             <label>Status</label>

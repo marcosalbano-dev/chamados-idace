@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, useContext } from "react";
 import Header from "../../components/Header";
 import Title from "../../components/Title";
 
@@ -25,13 +25,17 @@ export default function Customers() {
         setNomeCliente('')
         toast.success("Cliente registrado")
         })
+        
         .catch((error) => {
             console.log(error)
             toast.error("Erro ao fazer o cadastro.")
         }) 
+         
+
     } else {
         toast.error("Preeencha todos os campos.")
     }
+    
   }
 
   function handleChangeSetor(e) {
@@ -42,7 +46,7 @@ export default function Customers() {
     <div>
       <Header />
       <div className="content">
-        <Title name="Clientes">
+        <Title name="Usuários">
           <FiUser size={25} />
         </Title>
 
@@ -69,10 +73,10 @@ export default function Customers() {
               <option value="Supad">Supad - Superintendência Adjunta</option>
               <option value="Uniti">Uniti - Unidade de Tecnologia da Informação</option>
             </select>
-            <label>Cliente</label>
+            <label>Usuário</label>
             <input
               type="text"
-              placeholder="Digite o nome do cliente"
+              placeholder="Digite o nome do usuário"
               value={nomeCliente}
               onChange={(e) => setNomeCliente(e.target.value)}
             />
